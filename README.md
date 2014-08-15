@@ -1,8 +1,8 @@
-ScubaClick Meta
+Phoenix Meta
 ===============
 
 Trait and model to attach meta data to Eloquent models.
-Developed for [ScubaClick](http://scubaclick.com) and is considered stable now!
+Developed for [Phoenix](http://Phoenix.com) and is considered stable now!
 
 Stable Version
 --------------
@@ -13,7 +13,7 @@ General Installation
 
 Install by adding the following to the require block in composer.json:
 ```
-"scubaclick/meta": "1.*"
+"Phoenix/meta": "1.*"
 ```
 
 Then run `composer update`.
@@ -22,7 +22,7 @@ Run Migrations
 --------------
 
 ```
-php artisan migrate --package="scubaclick/meta"
+php artisan migrate --package="Phoenix/meta"
 
 ```
 
@@ -36,7 +36,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SomeModel extends Model
 {
-    use \ScubaClick\Meta\MetaTrait;
+    use \Phoenix\Meta\MetaTrait;
 
     // model methods
 }
@@ -64,11 +64,11 @@ class User extends Eloquent {
     protected $meta_model = 'Full\Namespace\UserMeta';
 }
 ```
-Then in UserMeta simply extends \ScubaClick\Meta\Meta.
+Then in UserMeta simply extends \Phoenix\Meta\Meta.
 
 Finally, if you want UserMeta stored in a dedicated users_meta table (or any other table name), declare it in the meta model.
 ```php
-class UserMeta extends \ScubaClick\Meta\Meta {
+class UserMeta extends \Phoenix\Meta\Meta {
     protected $table = "users_meta";
 }
 ```
@@ -77,11 +77,11 @@ You can create the users_meta table manually, or include MetaServiceProvider in 
 ```php
 'providers' => array(
     ...
-    'ScubaClick\Meta\MetaServiceProvider'
+    'Phoenix\Meta\MetaServiceProvider'
 ```
 Then, you can run ```php artisan generate:metatable table_name``` to create the migration and run ```php artisan migrate``` to build the users_meta table.
 
 License
 -------
 
-ScubaClick Meta is licenced under the MIT license.
+Phoenix Meta is licenced under the MIT license.

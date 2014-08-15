@@ -1,6 +1,6 @@
 <?php namespace Phoenix\EloquentMeta;
 
-use ScubaClick\EloquentMeta\Helpers;
+use Phoenix\EloquentMeta\Helpers;
 use Illuminate\Support\Collection;
 
 trait MetaTrait
@@ -187,7 +187,7 @@ trait MetaTrait
      */
     public function meta()
     {
-        $meta_model = isset($this->meta_model) ? $this->meta_model : '\ScubaClick\Meta\Meta';
+        $meta_model = isset($this->meta_model) ? $this->meta_model : '\Phoenix\Meta\Meta';
         return $this->morphMany($meta_model, 'metable');
     }
 }

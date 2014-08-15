@@ -2,7 +2,7 @@
 
 use Cache;
 use Validator;
-use ScubaClick\EloquentMeta\Helpers;
+use Phoenix\EloquentMeta\Helpers;
 use Illuminate\Support\MessageBag;
 use Illuminate\Database\Eloquent\Model;
 

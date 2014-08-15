@@ -17,15 +17,15 @@ class MetaServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->package('scubaclick/meta');
+        $this->package('Phoenix/meta');
 
         $this->app->bind(
-            'scubaclick.metable',
-            'Phoenix\Meta\CreateMetaTableCommand');
+            'phoenix.metable',
+            'Phoenix\EloquentMeta\CreateMetaTableCommand');
 
 		// $this->app->register('Way\Generators\GeneratorsServiceProvider');
 
-        $this->commands('scubaclick.metable');
+        $this->commands('phoenix.metable');
     }
 
 	/**
