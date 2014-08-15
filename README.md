@@ -1,41 +1,29 @@
-<<<<<<< HEAD
-Phoenix Meta
-=======
 Phoenix Eloquent Meta
->>>>>>> feae8ae92396c41965960b4d8db82de793be1eca
 ===============
-This package was originally forked from the excellent [ScubaClick Meta](https://github.com/ScubaClick/scubaclick-meta). 
+This package was originally forked from the excellent **[ScubaClick Meta](https://github.com/ScubaClick/scubaclick-meta)**. It includes a trait and model to attach meta data to ]Laravel's](http://laravel.com/) [Eloquent models](http://laravel.com/docs/eloquent). The project was forked in order to add a way to set a default return for getMeta() if nothing was set. It also allows the developer to create seperate database tables for different meta types (e.g. user_meta, profile_meta, etc).
 
-Trait and model to attach meta data to Eloquent models.
-Developed for [Phoenix](http://Phoenix.com) and is considered stable now!
+Though not required, Eloquent Meta also works with [Phoenix Larvel Repositories](http://github.com/phoenix-labs/laravel-repositories). 
 
 Stable Version
 --------------
-v1.0.1
+v1.2.0
 
 General Installation
 --------------------
 
 Install by adding the following to the require block in composer.json:
 ```
-<<<<<<< HEAD
-"Phoenix/meta": "1.*"
-=======
 "phoenix/eloquent-meta": "1.*"
->>>>>>> feae8ae92396c41965960b4d8db82de793be1eca
 ```
 
 Then run `composer update`.
 
 Run Migrations
 --------------
+The following will create the table "meta" in your database.
 
 ```
-<<<<<<< HEAD
-php artisan migrate --package="Phoenix/meta"
-=======
 php artisan migrate --package="phoenix/eloquentmeta"
->>>>>>> feae8ae92396c41965960b4d8db82de793be1eca
 
 ```
 
@@ -46,14 +34,11 @@ Add the trait to all models that you want to attach meta data to:
 
 ```php
 use Illuminate\Database\Eloquent\Model;
+use Phoneix\EloquentMeta\MetaTrait;
 
 class SomeModel extends Model
 {
-<<<<<<< HEAD
-    use \Phoenix\Meta\MetaTrait;
-=======
-    use \Phoenix\EloquentMeta\MetaTrait;
->>>>>>> feae8ae92396c41965960b4d8db82de793be1eca
+    use MetaTrait;
 
     // model methods
 }
@@ -64,7 +49,7 @@ Then use like this:
 ```php
 $model = SomeModel::find(1);
 $model->getAllMeta();
-$model->getMeta('some_key');
+$model->getMeta('some_key', 'optional default value'); // default value only returned if no meta found.
 $model->updateMeta('some_key', 'New Value');
 $model->deleteMeta('some_key');
 $model->deleteAllMeta();
@@ -74,43 +59,40 @@ $model->appendMeta('new_key', 'Second Value');
 
 Unique Meta Models and Tables
 -----
-You can also define a specific meta model for a meta type. For instance, your User model can use UserMeta model with custom methods and all. In the parent model,
+You can also define a specific meta model for a meta type. For instance, your User model can use UserMeta model with custom methods and all. Using the example above:
 
 ```php
-class User extends Eloquent {
-    protected $meta_model = 'Full\Namespace\UserMeta';
+use Illuminate\Database\Eloquent\Model;
+use Phoneix\EloquentMeta\MetaTrait;
+
+class SomeModel extends Model
+{
+    use MetaTrait;
+    
+    protected $meta_model = 'Fully\Namespaced\SomeModelMeta';
+
+    // model methods
 }
 ```
-Then in UserMeta simply extends \Phoenix\Meta\Meta.
+Then in SomeModelMeta simply extends Phoenix\EloquentMeta\Meta. You may now add custom methods to the meta model. You may also dictate which table the metadata is saved to by adding
 
-Finally, if you want UserMeta stored in a dedicated users_meta table (or any other table name), declare it in the meta model.
 ```php
-<<<<<<< HEAD
-class UserMeta extends \Phoenix\Meta\Meta {
-=======
-class UserMeta extends \Phoenix\EloquentMeta\Meta {
->>>>>>> feae8ae92396c41965960b4d8db82de793be1eca
-    protected $table = "users_meta";
-}
+protected $table = "whatever_table";
 ```
 
 You can create the users_meta table manually, or include MetaServiceProvider in your app/config/app.php
 ```php
 'providers' => array(
     ...
-<<<<<<< HEAD
-    'Phoenix\Meta\MetaServiceProvider'
-=======
     'Phoenix\EloquentMeta\MetaServiceProvider'
->>>>>>> feae8ae92396c41965960b4d8db82de793be1eca
 ```
-Then, you can run ```php artisan generate:metatable table_name``` to create the migration and run ```php artisan migrate``` to build the users_meta table.
+Then run ```php artisan generate:metatable table_name``` to create the migration and run ```php artisan migrate``` to build the users_meta table.
 
 License
 -------
 
-<<<<<<< HEAD
-Phoenix Meta is licenced under the MIT license.
-=======
 Phoenix Eloquent Meta is licenced under the MIT license.
->>>>>>> feae8ae92396c41965960b4d8db82de793be1eca
+
+Thank you
+-------
+Many thanks to [Boris Glumpler](https://github.com/shabushabu) and [ScubaClick](https://github.com/ScubaClick)!
