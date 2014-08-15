@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a8a5427-e364-4369-b9e6-f06ee9c43571" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Phoenix/EloquentMeta/Meta.php" afterPath="$PROJECT_DIR$/src/Phoenix/EloquentMeta/Meta.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Phoenix/EloquentMeta/MetaServiceProvider.php" afterPath="$PROJECT_DIR$/src/Phoenix/EloquentMeta/MetaServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Phoenix/EloquentMeta/MetaTrait.php" afterPath="$PROJECT_DIR$/src/Phoenix/EloquentMeta/MetaTrait.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="eloquent-meta.iws" />
@@ -30,14 +26,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Meta.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Phoenix/EloquentMeta/Meta.php">
+      <file leaf-file-name="MetaServiceProvider.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Phoenix/EloquentMeta/MetaServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5800933" vertical-offset="4307" max-vertical-offset="4950">
-              <caret line="156" column="44" selection-start-line="156" selection-start-column="44" selection-end-line="156" selection-end-column="44" />
-              <folding>
-                <element signature="e#39#49#0#PHP" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="1.2965723" vertical-offset="0" max-vertical-offset="1710">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -261,14 +255,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Phoenix/EloquentMeta/MetaServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2071536" vertical-offset="0" max-vertical-offset="1710">
-          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Phoenix/EloquentMeta/MetaTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.4217587" vertical-offset="5130" max-vertical-offset="5940">
@@ -295,11 +281,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Phoenix/EloquentMeta/Meta.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5800933" vertical-offset="4307" max-vertical-offset="4950">
-          <caret line="156" column="44" selection-start-line="156" selection-start-column="44" selection-end-line="156" selection-end-column="44" />
-          <folding>
-            <element signature="e#39#49#0#PHP" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.1866252" vertical-offset="0" max-vertical-offset="4950">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Phoenix/EloquentMeta/MetaServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2965723" vertical-offset="0" max-vertical-offset="1710">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
