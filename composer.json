@@ -1,5 +1,5 @@
 {
-    "name": "scubaclick/meta",
+    "name": "phoenix/eloquent-meta",
     "description": "Attach meta data to Eloquent models",
     "keywords": ["eloquent", "laravel", "meta"],
     "homepage": "https://github.com/phoenix-labs/eloquent-meta",
@@ -7,7 +7,7 @@
     "authors": [
         {
             "name": "Michael Wilson",
-            "email": "phoenix-labs@gmail.com"
+            "email": "phoenixlabsdev@gmail.com"
         },
         {
             "name": "Boris Glumpler",
@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.*",
+        "illuminate/support": "4.2.*",
         "nesbot/carbon": "1.*"
     },
     "autoload": {
