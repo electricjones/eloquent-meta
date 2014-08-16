@@ -4,7 +4,7 @@ This package was originally forked from the excellent **[ScubaClick Meta](https:
 
 Though not required, Eloquent Meta also works with [Phoenix Larvel Repositories](http://github.com/phoenix-labs/laravel-repositories). 
 
-### Stable Version: 1.2.0
+##### Stable Version: 1.2.0
 
 ## Installation
 
