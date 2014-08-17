@@ -12,7 +12,7 @@ Install through Composer.
 
 ```js
 "require": {
-    "phoenix/eloquent-meta": "~1.0"
+    "phoenix/eloquent-meta": "~1.2.*"
 }
 ```
 
