@@ -3,8 +3,7 @@
 use Phoenix\EloquentMeta\Helpers;
 use Illuminate\Support\Collection;
 
-trait MetaTrait
-{
+trait MetaTrait {
     /**
      * Gets all meta data
      *
@@ -187,7 +186,7 @@ trait MetaTrait
      */
     public function meta()
     {
-        $meta_model = isset($this->meta_model) ? $this->meta_model : '\Phoenix\Meta\Meta';
+        $meta_model = isset($this->meta_model) ? $this->meta_model : 'Phoenix\EloquentMeta\Meta';
         return $this->morphMany($meta_model, 'metable');
     }
 }

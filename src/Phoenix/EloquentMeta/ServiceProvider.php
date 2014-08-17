@@ -1,8 +1,8 @@
 <?php namespace Phoenix\EloquentMeta;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as BaseService;
 
-class ServiceProvider extends ServiceProvider {
+class ServiceProvider extends BaseService {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -11,14 +11,29 @@ class ServiceProvider extends ServiceProvider {
 	 */
 	protected $defer = false;
 
+
+    /**
+     * Booting
+     */
+    public function boot()
+    {
+        $this->package('phoenix/eloquent-meta');
+
+        $this->app->bind(
+            'phoenix.metable',
+            'Phoenix\EloquentMeta\CreateMetaTableCommand');
+
+        $this->commands('phoenix.metable');
+    }
+
 	/**
-	 * Register the service provider.
+	 * Register the commands
 	 *
 	 * @return void
 	 */
 	public function register()
 	{
-		//
+
 	}
 
 	/**
