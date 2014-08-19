@@ -24,7 +24,7 @@ Next, update `app/config/app.php` to include a reference to this package's servi
 ]
 ```
 
-Finally, run the migration ```php artisan migrate --package="phoenix/eloquentmeta"``` to create the database table.
+Finally, run the migration ```php artisan migrate --package="phoenix/eloquent-meta"``` to create the database table.
 
 ## Usage
 
