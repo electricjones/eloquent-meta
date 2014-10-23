@@ -44,7 +44,7 @@ class CreateMetaTableCommand extends Command {
 		$migration = "create_{$table_name}_table";
 
 		// The template file is the migration that ships with the package
-		$template_dir = __DIR__';
+		$template_dir = __DIR__;
 		$template_file = 'SchemaTemplate.php';
 		$template_path = $template_dir . $template_file;
 
