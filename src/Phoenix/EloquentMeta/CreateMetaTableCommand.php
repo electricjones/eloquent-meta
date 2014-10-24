@@ -46,7 +46,7 @@ class CreateMetaTableCommand extends Command {
 		// The template file is the migration that ships with the package
 		$template_dir = __DIR__';
 		$template_file = 'SchemaTemplate.php';
-		$template_path = $template_dir . $template_file;
+		$template_path = $template_dir . '/' . $template_file;
 
 		// Make sure the template path exists
 		if ( ! $this->fs->exists($template_path))
