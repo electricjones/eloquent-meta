@@ -104,7 +104,14 @@ trait MetaTrait {
     {
         $meta = $this->getMeta($key);
 
-        if(!$meta) $meta = [];
+        if (!$meta)
+        {
+            $meta = [];
+        }
+        else if (!is_array($meta))
+        {
+            $meta = [$meta];
+        }
 
         if(is_array($value))
         {
