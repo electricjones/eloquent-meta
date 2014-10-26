@@ -12,7 +12,7 @@ Install through Composer.
 
 ```js
 "require": {
-    "phoenix/eloquent-meta": "~1.2.*"
+    "phoenix/eloquent-meta": "1.2.*"
 }
 ```
 
@@ -32,7 +32,7 @@ Add the trait to all models that you want to attach meta data to:
 
 ```php
 use Illuminate\Database\Eloquent\Model;
-use Phoneix\EloquentMeta\MetaTrait;
+use Phoenix\EloquentMeta\MetaTrait;
 
 class SomeModel extends Model
 {
@@ -61,7 +61,7 @@ You can also define a specific meta model for a meta type. For instance, your Us
 
 ```php
 use Illuminate\Database\Eloquent\Model;
-use Phoneix\EloquentMeta\MetaTrait;
+use Phoenix\EloquentMeta\MetaTrait;
 
 class SomeModel extends Model
 {
