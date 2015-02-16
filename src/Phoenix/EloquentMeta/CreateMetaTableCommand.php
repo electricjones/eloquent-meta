@@ -62,7 +62,7 @@ class CreateMetaTableCommand extends Command {
 		// Make Sure the Destination Directory exists
 		if ( ! $this->fs->isDirectory($dest_dir))
 		{
-			dd('invalid destination directory');
+			return $this->error('Unable to find destination directory: ' . $dest_dir);
 		}
 
 		// Read Template File
