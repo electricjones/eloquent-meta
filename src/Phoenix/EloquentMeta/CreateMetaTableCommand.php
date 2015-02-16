@@ -41,6 +41,7 @@ class CreateMetaTableCommand extends Command {
 	public function fire()
 	{
 		$table_name = strtolower($this->argument('name'));
+		$dest_dir = strtolower($this->argument('dest'));
 		$migration = "create_{$table_name}_table";
 
 		// The template file is the migration that ships with the package
@@ -55,7 +56,7 @@ class CreateMetaTableCommand extends Command {
 		}
 		
 		// Set the Destination Directory
-		$dest_dir = app_path() . '/database/migrations/';
+		//$dest_dir = app_path() . '/database/migrations/';
 		$dest_file = date("Y_m_d_His").'_'.$migration.'.php';
 		$dest_path = $dest_dir . $dest_file;
 
@@ -92,6 +93,7 @@ class CreateMetaTableCommand extends Command {
 	{
 		return array(
 			array('name', InputArgument::REQUIRED, 'The name of the metatable to be built.'),
+			array('dest', InputArgument::OPTIONAL, 'The destination of the migration file', app_path() . '/database/migrations/'),
 		);
 	}
 
