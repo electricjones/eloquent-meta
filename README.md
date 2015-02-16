@@ -2,7 +2,7 @@
 
 This package was originally forked from the excellent **[ScubaClick Meta](https://github.com/ScubaClick/scubaclick-meta)**. It includes a trait and model to attach meta data to [Laravel's](http://laravel.com/) [Eloquent models](http://laravel.com/docs/eloquent). The project was forked in order to add a way to set a default return for getMeta() if nothing was set. It also allows the developer to create seperate database tables for different meta types (e.g. user_meta, profile_meta, etc).
 
-##### Stable Version: 1.3.* works with Laravel .*
+##### Stable Version: 1.3.* works with Laravel 5.*
 To use for Laravel 4, see version 1.2.*
 
 ## Installation
