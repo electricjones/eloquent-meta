@@ -55,7 +55,7 @@ class CreateMetaTableCommand extends Command {
 		}
 		
 		// Set the Destination Directory
-		$dest_dir = base_path() . '/database/migrations/';
+		$dest_dir = app_path() . '/database/migrations/';
 		$dest_file = date("Y_m_d_His").'_'.$migration.'.php';
 		$dest_path = $dest_dir . $dest_file;
 
@@ -91,7 +91,8 @@ class CreateMetaTableCommand extends Command {
 	protected function getArguments()
 	{
 		return array(
-			array('name', InputArgument::REQUIRED, 'The name of the metatable to be built.')		);
+			array('name', InputArgument::REQUIRED, 'The name of the metatable to be built.')
+		);
 	}
 
 	/**
