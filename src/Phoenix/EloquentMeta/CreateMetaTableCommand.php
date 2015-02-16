@@ -93,7 +93,7 @@ class CreateMetaTableCommand extends Command {
 	{
 		return array(
 			array('name', InputArgument::REQUIRED, 'The name of the metatable to be built.'),
-			array('dest', InputArgument::OPTIONAL, 'The destination of the migration file', app_path() . '/database/migrations/'),
+			array('dest', InputArgument::OPTIONAL, 'The destination of the migration file', base_path() . '/database/migrations/'),
 		);
 	}
 
