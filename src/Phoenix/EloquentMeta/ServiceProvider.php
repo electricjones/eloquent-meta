@@ -17,13 +17,15 @@ class ServiceProvider extends BaseService {
      */
     public function boot()
     {
-        $this->package('phoenix/eloquent-meta');
-
         $this->app->bind(
             'phoenix.metable',
             'Phoenix\EloquentMeta\CreateMetaTableCommand');
 
         $this->commands('phoenix.metable');
+        
+        $this->publishes([
+	    __DIR__.'/../../migrations/' => base_path('/database/migrations')
+	], 'migrations');
     }
 
 	/**
