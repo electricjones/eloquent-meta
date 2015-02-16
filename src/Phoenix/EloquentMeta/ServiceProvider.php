@@ -22,6 +22,10 @@ class ServiceProvider extends BaseService {
             'Phoenix\EloquentMeta\CreateMetaTableCommand');
 
         $this->commands('phoenix.metable');
+        
+        $this->publishes([
+	    __DIR__.'/../../migrations/' => base_path('/database/migrations')
+	], 'migrations');
     }
 
 	/**
