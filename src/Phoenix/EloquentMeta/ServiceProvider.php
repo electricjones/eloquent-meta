@@ -17,8 +17,6 @@ class ServiceProvider extends BaseService {
      */
     public function boot()
     {
-        $this->package('phoenix/eloquent-meta');
-
         $this->app->bind(
             'phoenix.metable',
             'Phoenix\EloquentMeta\CreateMetaTableCommand');
