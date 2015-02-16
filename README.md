@@ -15,7 +15,7 @@ Install through Composer.
 }
 ```
 
-Next, update `app/config/app.php` to include a reference to this package's service provider in the providers array.
+Next, update `config/app.php` to include a reference to this package's service provider in the providers array.
 
 ```php
 'providers' => [
@@ -23,7 +23,7 @@ Next, update `app/config/app.php` to include a reference to this package's servi
 ]
 ```
 
-Finally, run the migration ```php artisan migrate --package="phoenix/eloquent-meta"``` to create the database table.
+Finally, run the migration `php artisan vendor:publish` and `php artisan migrate` to create the database table.
 
 ## Usage
 
