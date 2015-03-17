@@ -16,7 +16,14 @@ class Helpers
 
         $decoded = json_decode($value, $asArray);
 
-        return json_last_error() == JSON_ERROR_NONE ? $decoded : $value;
+        if (json_last_error() == JSON_ERROR_NONE){
+            return $decoded;
+        } else {
+            // Reset the JSON error code:
+            json_decode("[]");
+
+            return $value;
+        }
     }
 
     /**
