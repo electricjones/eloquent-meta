@@ -2,14 +2,14 @@
 
 use Illuminate\Support\ServiceProvider as BaseService;
 
-class ServiceProvider extends BaseService {
-
-	/**
-	 * Indicates if loading of the provider is deferred.
-	 *
-	 * @var bool
-	 */
-	protected $defer = false;
+class ServiceProvider extends BaseService
+{
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
 
 
     /**
@@ -19,33 +19,33 @@ class ServiceProvider extends BaseService {
     {
         $this->app->bind(
             'phoenix.metable',
-            'Phoenix\EloquentMeta\CreateMetaTableCommand');
+            'Phoenix\EloquentMeta\CreateMetaTableCommand'
+        );
 
         $this->commands('phoenix.metable');
-        
+
         $this->publishes([
-	    __DIR__.'/../../migrations/' => base_path('/database/migrations')
-	], 'migrations');
+            __DIR__.'/../../migrations/' => base_path('/database/migrations')
+        ], 'migrations');
     }
 
-	/**
-	 * Register the commands
-	 *
-	 * @return void
-	 */
-	public function register()
-	{
+    /**
+     * Register the commands
+     *
+     * @return void
+     */
+    public function register()
+    {
 
-	}
+    }
 
-	/**
-	 * Get the services provided by the provider.
-	 *
-	 * @return array
-	 */
-	public function provides()
-	{
-		return array();
-	}
-
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [];
+    }
 }
