@@ -2,7 +2,6 @@
 namespace Phoenix\EloquentMeta\Test;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Illuminate\Container\Container;
 use Phoenix\EloquentMeta\Test\Stubs\Test;
 
 class MetaTest extends \PHPUnit_Framework_TestCase
@@ -42,7 +41,6 @@ class MetaTest extends \PHPUnit_Framework_TestCase
         $this->testData->nicole = ['id' => 1, 'name' => 'Nicole', 'email' => 'nicole@nicole.com'];
         $this->testData->michael = ['id' => 2, 'name' => 'Michael', 'email' => 'michael@michael.com'];
         $this->testData->jon = ['id' => 3, 'name' => 'Jon', 'email' => 'jon@nicole.com'];
-
     }
 
     public function teardown()
