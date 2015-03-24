@@ -1,13 +1,13 @@
 <?php namespace Phoenix\EloquentMeta;
 
-use Phoenix\EloquentMeta\Helpers;
 use Illuminate\Support\Collection;
 
-trait MetaTrait {
+trait MetaTrait
+{
     /**
      * Gets all meta data
      *
-     * @return Illuminate\Support\Collection
+     * @return \Illuminate\Support\Collection
      */
     public function getAllMeta()
     {
@@ -17,7 +17,10 @@ trait MetaTrait {
     /**
      * Gets meta data
      *
-     * @return Illuminate\Support\Collection
+     * @param $key
+     * @param null $default
+     * @param bool $getObj
+     * @return Collection
      */
     public function getMeta($key, $default = null, $getObj = false)
     {
@@ -25,23 +28,21 @@ trait MetaTrait {
             ->where('key', $key)
             ->get();
 
-        if ($getObj)
-        {
+        if ($getObj) {
             $collection = $meta;
-        }
-        else
-        {
+
+        } else {
             $collection = new Collection();
 
-            foreach ($meta as $m)
-            {
+            foreach ($meta as $m) {
                 $collection->put($m->id, $m->value);
             }
         }
 
         // Were there no records? Return NULL if no default provided
-        if ($collection->count() == 0)
+        if (0 == $collection->count()) {
             return $default;
+        }
 
         return $collection->count() <= 1 ? $collection->first() : $collection;
     }
@@ -55,21 +56,21 @@ trait MetaTrait {
     {
         $meta = $this->getMeta($key, null, true);
 
-        if ($meta == null)
-        {
+        if ($meta == null) {
             return $this->addMeta($key, $newValue);
         }
 
         $obj = $this->getEditableItem($meta, $oldValue);
 
-        if ($obj !== false)
-        {
+        if ($obj !== false) {
             $isSaved = $obj->update([
                 'value' => $newValue
             ]);
 
             return $isSaved ? $obj : $obj->getErrors();
         }
+
+        return null;
     }
 
     /**
@@ -84,7 +85,9 @@ trait MetaTrait {
             ->where('value', Helpers::maybeEncode($value))
             ->first();
 
-        if ($existing) return false;
+        if ($existing) {
+            return false;
+        }
 
         $meta = $this->meta()->create([
             'key'   => $key,
@@ -104,21 +107,16 @@ trait MetaTrait {
     {
         $meta = $this->getMeta($key);
 
-        if (!$meta)
-        {
+        if (!$meta) {
             $meta = [];
-        }
-        else if (!is_array($meta))
-        {
+
+        } elseif (!is_array($meta)) {
             $meta = [$meta];
         }
 
-        if(is_array($value))
-        {
+        if (is_array($value)) {
             $meta = array_merge($meta, $value);
-        }
-        else
-        {
+        } else {
             $meta[] = $value;
         }
 
@@ -128,22 +126,24 @@ trait MetaTrait {
     /**
      * Deletes meta data
      *
+     * @param $key
+     * @param bool $value
      * @return mixed
      */
     public function deleteMeta($key, $value = false)
     {
-        if ($value)
-        {
+        if ($value) {
             $meta = $this->getMeta($key, null, true);
 
-            if ($meta == null) return false;
+            if ($meta == null) {
+                return false;
+            }
 
             $obj = $this->getEditableItem($meta, $value);
 
             return $obj !== false ? $obj->delete() : false;
-        }
-        else
-        {
+
+        } else {
             return $this->meta()->where('key', $key)->delete();
         }
     }
@@ -165,21 +165,22 @@ trait MetaTrait {
      */
     protected function getEditableItem($meta, $value)
     {
-        if ($meta instanceof Collection)
-        {
-            if ($value === false) return false;
+        if ($meta instanceof Collection) {
+            if ($value === false) {
+                return false;
+            }
 
-            $filtered = $meta->filter(function($m) use ($value)
-            {
+            $filtered = $meta->filter(function($m) use ($value) {
                 return $m->value == $value;
             });
 
             $obj = $filtered->first();
 
-            if ($obj == null) return false;
-        }
-        else
-        {
+            if ($obj == null) {
+                return false;
+            }
+
+        } else {
             $obj = $meta;
         }
 

@@ -1,10 +1,10 @@
 <?php namespace Phoenix\EloquentMeta;
 
-use Cache;
-use Validator;
-use Phoenix\EloquentMeta\Helpers;
+use Illuminate\Container\Container;
 use Illuminate\Support\MessageBag;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Factory;
+use Symfony\Component\Translation\Translator;
 
 class Meta extends Model
 {
@@ -37,7 +37,7 @@ class Meta extends Model
     /**
      * Error message bag
      *
-     * @var Illuminate\Support\MessageBag
+     * @var \Illuminate\Support\MessageBag
      */
     protected $errors;
 
@@ -62,8 +62,7 @@ class Meta extends Model
     {
         parent::boot();
 
-        static::saving(function($model)
-        {
+        static::saving(function($model) {
             return $model->validate();
         });
     }
@@ -75,7 +74,8 @@ class Meta extends Model
      */
     public function validate()
     {
-        $validator = Validator::make($this->attributes, static::$rules);
+        $validatorFactory = new Factory(new Translator('en'), new Container());
+        $validator = $validatorFactory->make($this->attributes, static::$rules);
 
         if ($validator->passes()) {
             return true;
@@ -89,7 +89,7 @@ class Meta extends Model
     /**
      * Set error message bag
      *
-     * @var Illuminate\Support\MessageBag
+     * @var \Illuminate\Support\MessageBag
      * @return void
      */
     protected function setErrors(MessageBag $errors)
@@ -100,7 +100,7 @@ class Meta extends Model
     /**
      * Retrieve error message bag
      *
-     * @return Illuminate\Support\MessageBag
+     * @return \Illuminate\Support\MessageBag
      */
     public function getErrors()
     {
@@ -129,8 +129,7 @@ class Meta extends Model
 
     /**
      * Connect the models
-     *
-     * @return
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function metable()
     {
@@ -140,6 +139,7 @@ class Meta extends Model
     /**
      * Maybe decode a meta value
      *
+     * @param $value
      * @return mixed
      */
     public function getValueAttribute($value)
@@ -150,6 +150,7 @@ class Meta extends Model
     /**
      * Maybe encode a value for saving
      *
+     * @param $value
      * @return null
      */
     public function setValueAttribute($value)

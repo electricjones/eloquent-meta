@@ -11,11 +11,14 @@ Install through Composer.
 
 ```js
 "require": {
-    "phoenix/eloquent-meta": "1.3.*"
+    "phoenix/eloquent-meta": "1.4.*"
 }
 ```
 
-Next, update `config/app.php` to include a reference to this package's service provider in the providers array.
+That's everything if you are using EloquentMeta and Eloquent **without** using Laravel. You will have to setup Eloquent as detailed
+in its [documentation](https://github.com/illuminate/database).
+
+If you **are using Laravel**, then you'll want to include the ServiceProvider that will register commands and the like. Update `config/app.php` to include a reference to this package's service provider in the providers array.
 
 ```php
 'providers' => [
@@ -26,7 +29,6 @@ Next, update `config/app.php` to include a reference to this package's service p
 Finally, run the migration `php artisan vendor:publish` and `php artisan migrate` to create the database table.
 
 ## Usage
-
 Add the trait to all models that you want to attach meta data to:
 
 ```php
@@ -55,7 +57,6 @@ $model->appendMeta('new_key', 'Second Value');
 ```
 
 ### Unique Meta Models and Tables
-
 You can also define a specific meta model for a meta type. For instance, your User model can use UserMeta model with custom methods and all. Using the example above:
 
 ```php
@@ -77,27 +78,22 @@ Then in SomeModelMeta simply extends Phoenix\EloquentMeta\Meta. You may now add 
 protected $table = "whatever_table";
 ```
 
-You can create the users_meta table manually, or include MetaServiceProvider in your app/config/app.php
+If you are using EloquentMeta independent of Laravel, then you will have to create the database table manually.
+
+If you are using Laravel, then include the service provider in your config/app.php
+
 ```php
-'providers' => array(
-    ...
-    'Phoenix\EloquentMeta\MetaServiceProvider'
+'providers' => [
+    'Phoenix\EloquentMeta\ServiceProvider'
+]
 ```
-Then run ```php artisan generate:metatable table_name``` to create the migration and run ```php artisan migrate``` to build the users_meta table.
+
+Then run ```php artisan generate:metatable table_name``` to create the migration and run ```php artisan migrate``` to build the table.
 
 ## Contributing
 [Phoenix Labs](http://phoenixlabstech.org) is a non-profit organization developing community-driven experiments in collaboration and content. "Community Driven" is more than just a slogan. It's a core value. Everything we do is for the community and by the community. Collaboration on any of the projects is welcome.
 
-To contribute to this project:
-  * **Fork or clone** this repository. All work is done in the development branch which may have many feature branches. The master is always the latest, production ready release.
-  * **Build** the library on your local machine.
-    1. Simply install it into Laravel with above instructions
-  * **Commit** your changes. All active files are in the /src/ directory.
-  * **Test** as needed. Write tests and add them to one of the test suites in /tests/. Please write new tests as needed and make sure you didn't break another test.
-  * **Issue a Pull Request** on this repository.
-  
-Be sure to be active. All discussion takes place in issue.
-Phoenix Eloquent Meta is licenced under the MIT open source licence.
+Please se [CONTRIBUTING.md] for more information and for testing.
 
 ### Thank you
 Many thanks to [Boris Glumpler](https://github.com/shabushabu) and [ScubaClick](https://github.com/ScubaClick)!
