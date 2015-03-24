@@ -6,7 +6,7 @@ use Phoenix\EloquentMeta\Test\Stubs\CustomModelParent;
 use Phoenix\EloquentMeta\Test\Stubs\Test;
 use Phoenix\EloquentMeta\Test\Stubs\TestModelForUniqueMetaModel;
 
-class MetaTest extends \PHPUnit_Framework_TestCase
+class CreateMetaTableCommandTest extends \PHPUnit_Framework_TestCase
 {
     public $db = false;
     public $testData;
@@ -62,11 +62,6 @@ class MetaTest extends \PHPUnit_Framework_TestCase
     {
         Capsule::schema()->drop('meta');
         Capsule::schema()->drop('tests');
-    }
-
-    public static function tearDownAfterClass()
-    {
-        file_put_contents(__DIR__ . "/db/test.sqlite", "");
     }
 
     public function test_database_setup()
