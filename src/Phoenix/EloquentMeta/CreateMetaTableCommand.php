@@ -53,7 +53,7 @@ class CreateMetaTableCommand extends Command
         }
 
         // Set the Destination Directory
-        $dest_dir = app_path() . '/database/migrations/';
+        $dest_dir = base_path() . '/database/migrations/';
         $dest_file = date("Y_m_d_His").'_'.$migration.'.php';
         $dest_path = $dest_dir . $dest_file;
 
@@ -75,7 +75,7 @@ class CreateMetaTableCommand extends Command
         $this->fs->put($dest_path, $contents);
 
         // Dump-Autoload
-        $this->call('dump-autoload');
+//        $this->call('dump-autoload');
 
         $this->info($table_name . ' migration created. run "php artisan migrate" to create the table');
     }
