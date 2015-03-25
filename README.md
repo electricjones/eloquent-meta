@@ -99,5 +99,11 @@ Then run ```php artisan generate:metatable table_name``` to create the migration
 
 Please se [CONTRIBUTING.md] for more information and for testing.
 
-### Thank you
-Many thanks to [Boris Glumpler](https://github.com/shabushabu) and [ScubaClick](https://github.com/ScubaClick)!
+### Thank you and Credits
+Contributors
+  - Michael Wilson - @[chrismichaels84](http://github.com/chrismichaels84) - Maintainer
+  - Paweł Ciesielski - @[dzafel](http://github.com/dzafel)
+  - Lukas Knuth - @[LukasKnuth](http://github.com/LukasKnuth)
+ 
+Many thanks to [Boris Glumpler](https://github.com/shabushabu) and [ScubaClick](https://github.com/ScubaClick) for the original package!
+
