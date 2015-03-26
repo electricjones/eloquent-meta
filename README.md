@@ -19,8 +19,7 @@ Install through Composer.
 }
 ```
 
-That's everything if you are using EloquentMeta and Eloquent **without** using Laravel. You will have to setup Eloquent as detailed
-in its [documentation](https://github.com/illuminate/database).
+That's everything if you are using EloquentMeta and Eloquent **without** using Laravel. You will have to setup Eloquent as detailed in its [documentation](https://github.com/illuminate/database).
 
 If you **are using Laravel**, then you'll want to include the ServiceProvider that will register commands and the like. Update `config/app.php` to include a reference to this package's service provider in the providers array.
 
@@ -31,6 +30,22 @@ If you **are using Laravel**, then you'll want to include the ServiceProvider th
 ```
 
 Finally, run the migration `php artisan vendor:publish` and `php artisan migrate` to create the database table.
+
+If you **are not using Laravel** then you must create the table manually.
+
+```sql
+CREATE TABLE meta
+(
+    id INTEGER PRIMARY KEY NOT NULL,
+    metable_id INTEGER NOT NULL,
+    metable_type TEXT NOT NULL,
+    key TEXT NOT NULL,
+    value TEXT NOT NULL
+);
+CREATE UNIQUE INDEX meta_key_index ON meta (key);
+CREATE UNIQUE INDEX meta_metable_id_index ON meta (metable_id);
+
+```
 
 ## Usage
 Add the trait to all models that you want to attach meta data to:
@@ -99,5 +114,11 @@ Then run ```php artisan generate:metatable table_name``` to create the migration
 
 Please se [CONTRIBUTING.md] for more information and for testing.
 
-### Thank you
-Many thanks to [Boris Glumpler](https://github.com/shabushabu) and [ScubaClick](https://github.com/ScubaClick)!
+### Thank you and Credits
+Contributors
+  - Michael Wilson - @[chrismichaels84](http://github.com/chrismichaels84) - Maintainer
+  - Paweł Ciesielski - @[dzafel](http://github.com/dzafel)
+  - Lukas Knuth - @[LukasKnuth](http://github.com/LukasKnuth)
+ 
+Many thanks to [Boris Glumpler](https://github.com/shabushabu) and [ScubaClick](https://github.com/ScubaClick) for the original package!
+
