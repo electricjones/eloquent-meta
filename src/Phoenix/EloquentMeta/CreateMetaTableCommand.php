@@ -68,8 +68,8 @@ class CreateMetaTableCommand extends Command
         // Replace what is necessary
         $classname = 'Create'.studly_case(ucfirst($table_name)).'Table';
 
-        $contents = str_replace('CreateMetaTable', $classname, $template);
-        $contents = str_replace("'meta'", "'".$table_name."'", $contents);
+        $contents = str_replace("'__meta__'", "'".$table_name."'", $template);
+        $contents = str_replace('SchemaTemplate', $classname, $contents);
 
         // Write new Migration to destination
         $this->fs->put($dest_path, $contents);

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMetaTable extends Migration
+class SchemaTemplate extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateMetaTable extends Migration
      */
     public function up()
     {
-        Schema::create('meta', function(Blueprint $table) {
+        Schema::create('__meta__', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('metable_id')->unsigned();
             $table->string('metable_type', 255);
@@ -31,6 +31,6 @@ class CreateMetaTable extends Migration
      */
     public function down()
     {
-        Schema::drop('meta');
+        Schema::drop('__meta__');
     }
 }
