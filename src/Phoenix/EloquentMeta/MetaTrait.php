@@ -59,7 +59,11 @@ trait MetaTrait
         if ($meta == null) {
             return $this->addMeta($key, $newValue);
         }
-
+		
+		if($newValue == NULL || $newValue == ''){
+			return $this->deleteMeta($key);
+		}
+		
         $obj = $this->getEditableItem($meta, $oldValue);
 
         if ($obj !== false) {
