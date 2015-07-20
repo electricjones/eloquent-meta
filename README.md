@@ -1,8 +1,8 @@
 # Phoenix Eloquent Meta
 
-[![Latest Version](https://img.shields.io/github/release/phoenix-labs/eloquent-meta.svg?style=flat-square)](https://github.com/phoenix-labs/eloquent-meta/releases)
+[![Latest Version](https://img.shields.io/github/release/chrismichaels84/eloquent-meta.svg?style=flat-square)](https://github.com/phoenix-labs/eloquent-meta/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/phoenix-labs/eloquent-meta/master.svg?style=flat-square)](https://travis-ci.org/phoenix-labs/eloquent-meta)
+[![Build Status](https://img.shields.io/travis/chrismichaels84/eloquent-meta/master.svg?style=flat-square)](https://travis-ci.org/phoenix-labs/eloquent-meta)
 [![Total Downloads](https://img.shields.io/packagist/dt/phoenix/eloquent-meta.svg?style=flat-square)](https://packagist.org/packages/phoenix/eloquent-meta)
 
 This package was originally forked from the excellent **[ScubaClick Meta](https://github.com/ScubaClick/scubaclick-meta)**. It includes a trait and model to attach meta data to [Laravel's](http://laravel.com/) [Eloquent models](http://laravel.com/docs/eloquent). The project was forked in order to add a way to set a default return for getMeta() if nothing was set. It also allows the developer to create seperate database tables for different meta types (e.g. user_meta, profile_meta, etc).
