@@ -53,7 +53,10 @@ class Meta extends Model
         'value'        => 'required',
     ];
 
-   /**
+    /** @var  string Entity Class */
+    protected $entityClass;
+
+    /**
      * Listen for save event
      *
      * @return void
@@ -137,6 +140,15 @@ class Meta extends Model
     }
 
     /**
+     * Get all of the posts that are assigned this tag.
+     */
+    public function entity()
+    {
+        $entity = $this->getEntity();
+        return $this->morphedByMany($entity, 'metable', 'meta', 'metable_id');
+    }
+
+    /**
      * Maybe decode a meta value
      *
      * @param $value
@@ -156,5 +168,23 @@ class Meta extends Model
     public function setValueAttribute($value)
     {
         $this->attributes['value'] = Helpers::maybeEncode($value);
+    }
+
+    /**
+     * Set the entity class
+     * @param $entity
+     */
+    public function setEntity($entity)
+    {
+        $this->entityClass = $entity;
+    }
+
+    /**
+     * Get the entity class
+     * @return string
+     */
+    public function getEntity()
+    {
+        return $this->entityClass;
     }
 }
