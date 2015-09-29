@@ -17,7 +17,7 @@ class Helpers
 
         $decoded = json_decode($value, $asArray);
 
-        if (json_last_error() == JSON_ERROR_NONE) {
+        if (json_last_error() == JSON_ERROR_NONE && (is_object($decoded) || is_array($decoded))) {
             return $decoded;
         } else {
             // Reset the JSON error code:
