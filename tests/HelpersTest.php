@@ -2,7 +2,6 @@
 namespace Phoenix\EloquentMeta\Test;
 
 use Phoenix\EloquentMeta\Helpers;
-use Phoenix\EloquentMeta\Test\Stubs\TestModelForUniqueMetaModel;
 
 class HelpersTest extends \PHPUnit_Framework_TestCase
 {
