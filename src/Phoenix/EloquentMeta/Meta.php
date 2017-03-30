@@ -3,8 +3,9 @@
 use Illuminate\Container\Container;
 use Illuminate\Support\MessageBag;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Translation\ArrayLoader;
+use Illuminate\Translation\Translator;
 use Illuminate\Validation\Factory;
-use Symfony\Component\Translation\Translator;
 
 class Meta extends Model
 {
@@ -74,7 +75,7 @@ class Meta extends Model
      */
     public function validate()
     {
-        $validatorFactory = new Factory(new Translator('en'), new Container());
+        $validatorFactory = new Factory(new Translator(new ArrayLoader(), 'en'), new Container());
         $validator = $validatorFactory->make($this->attributes, static::$rules);
 
         if ($validator->passes()) {

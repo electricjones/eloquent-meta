@@ -28,7 +28,7 @@ Install through Composer.
 }
 ```
 
-Please not only php `5.6` and `7`+ are supported.
+Please note only php `5.6` and `7`+ are supported.
 
 If you are using EloquentMeta and Eloquent **without** using Laravel, 
 you will also have to setup Eloquent as detailed in its [documentation](https://github.com/illuminate/database).

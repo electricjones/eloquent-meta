@@ -1,6 +1,7 @@
 <?php namespace Phoenix\EloquentMeta;
 
 use Illuminate\Support\Collection;
+use Phoenix\EloquentMeta\Meta;
 
 trait MetaTrait
 {
@@ -194,7 +195,7 @@ trait MetaTrait
      */
     public function meta()
     {
-        $meta_model = isset($this->meta_model) ? $this->meta_model : 'Phoenix\EloquentMeta\Meta';
+        $meta_model = isset($this->meta_model) ? $this->meta_model : Meta::class;
         return $this->morphMany($meta_model, 'metable');
     }
 }
