@@ -6,11 +6,16 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/phoenix/eloquent-meta.svg?style=flat-square)](https://packagist.org/packages/phoenix/eloquent-meta)
 
 Attach meta data to [Laravel's](http://laravel.com/) [Eloquent models](http://laravel.com/docs/eloquent).
-  * Optionally create a seperate table for each Model
+  * Optionally create a separate table for each Model
   * Use with or without Laravel
   * Includes Laravel migrations or schema instructions
   * Get meta or fallback
 
+##### Which Version?
+- Laravel 5.4 - Use `1.6.*`
+- Laravel 5.3 - Use `1.5.*`
+- Below 5.3 - Not technically supported, but should work with `.1.3`
+- Laravel 4 - Also not supported, but should work with `1.2`
 ##### Stable Version: 1.4.* works with Laravel 5.* or independently. Pulls Eloquent in automatically.
 To use for Laravel 4, see version 1.2.*
 
@@ -19,11 +24,14 @@ Install through Composer.
 
 ```js
 "require": {
-    "phoenix/eloquent-meta": "1.4.*"
+    "phoenix/eloquent-meta": "1.6.*"
 }
 ```
 
-That's everything if you are using EloquentMeta and Eloquent **without** using Laravel. You will have to setup Eloquent as detailed in its [documentation](https://github.com/illuminate/database).
+Please not only php `5.6` and `7`+ are supported.
+
+If you are using EloquentMeta and Eloquent **without** using Laravel, 
+you will also have to setup Eloquent as detailed in its [documentation](https://github.com/illuminate/database).
 
 If you **are using Laravel**, then you'll want to include the ServiceProvider that will register commands and the like. Update `config/app.php` to include a reference to this package's service provider in the providers array.
 
@@ -33,7 +41,8 @@ If you **are using Laravel**, then you'll want to include the ServiceProvider th
 ]
 ```
 
-Finally, run the migration `php artisan vendor:publish` and `php artisan migrate` to create the database table.
+### Table Structure
+If you are using Laravel, run the migration `php artisan vendor:publish` and `php artisan migrate` to create the database table.
 
 If you **are not using Laravel** then you must create the table manually.
 
@@ -114,8 +123,6 @@ If you are using Laravel, then include the service provider in your config/app.p
 Then run ```php artisan generate:metatable table_name``` to create the migration and run ```php artisan migrate``` to build the table.
 
 ## Contributing
-[Phoenix Labs](http://phoenixlabstech.org) is a non-profit organization developing community-driven experiments in collaboration and content. "Community Driven" is more than just a slogan. It's a core value. Everything we do is for the community and by the community. Collaboration on any of the projects is welcome.
-
 Please se [CONTRIBUTING.md] for more information and for testing.
 
 ### Thank you and Credits

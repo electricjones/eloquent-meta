@@ -3,6 +3,14 @@
 All Notable changes to `EloquentMeta` will be documented in this file
 
 ## NEXT
+- Make compatible with Laravel 5.4
+
+## v1.5.1 - 3.30.2017
+- Replace `list()` with `pluck()` for collections
+- Refactor tests
+- Ensure comparability with Laravel 5.3
+- Update readme
+- Support only php 5.6 and above.
 
 ## v1.4.4 - 9.29.2015
 - `Helpers::maybeEncode()` does better check of json data. Closes #17
@@ -15,7 +23,7 @@ All Notable changes to `EloquentMeta` will be documented in this file
 
 ## v1.4.1 - 3.24.2015
 ### Added
-- Test Suite
+- TestModel Suite
 - Best Practice Project Skeleton
 - Travis CI
 - Contributing Guide and Licence

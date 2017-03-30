@@ -7,7 +7,7 @@ To contribute to this project:
   * **Fork or clone** this repository. All work is done in the development branch which may have many feature branches. The master is always the latest, production ready release.
   * **Build** the library on your local machine.
   * **Commit** your changes. All active files are in the /src/ directory.
-  * **Test** as needed. Write tests and add them to one of the test suites in /tests/. Please write new tests as needed and make sure you didn't break another test.
+  * **TestModel** as needed. Write tests and add them to one of the test suites in /tests/. Please write new tests as needed and make sure you didn't break another test.
   * **Issue a Pull Request** on this repository.
   
 Be sure to be active. All discussion takes place in issue.
