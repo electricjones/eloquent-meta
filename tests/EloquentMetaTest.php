@@ -3,8 +3,7 @@ namespace Phoenix\EloquentMeta\Test;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Phoenix\EloquentMeta\Test\Stubs\CustomModelParent;
-use Phoenix\EloquentMeta\Test\Stubs\Test;
-use Phoenix\EloquentMeta\Test\Stubs\TestModelForUniqueMetaModel;
+use Phoenix\EloquentMeta\Test\Stubs\TestModel;
 
 class MetaTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,6 +13,9 @@ class MetaTest extends \PHPUnit_Framework_TestCase
     public function setup()
     {
         if (!$this->db) {
+            // Start with a clean slate
+            file_put_contents(__DIR__ . "/db/test.sqlite", "");
+
             $this->db = new Capsule;
 
             $this->db->addConnection([
@@ -64,26 +66,21 @@ class MetaTest extends \PHPUnit_Framework_TestCase
         Capsule::schema()->drop('tests');
     }
 
-    public static function tearDownAfterClass()
-    {
-        file_put_contents(__DIR__ . "/db/test.sqlite", "");
-    }
-
     public function test_database_setup()
     {
-        $result = Capsule::select('select * from tests where name = ?', ['Nicole']);
-        $this->assertEquals([$this->testData->nicole], $result);
+        $result = Capsule::select('select * from tests where name = ?', ['Nicole'])[0];
+        $this->assertEquals($this->testData->nicole, get_object_vars($result));
     }
 
     public function test_model_setup()
     {
-        $result = Test::find(1);
+        $result = TestModel::find(1);
         $this->assertEquals($this->testData->nicole, $result->toArray());
     }
 
     public function test_add_and_get_meta()
     {
-        $model = Test::find(1);
+        $model = TestModel::find(1);
         $model->addMeta('testA', 'testA-value');
         $actual = $model->getMeta('testA');
 
@@ -92,7 +89,7 @@ class MetaTest extends \PHPUnit_Framework_TestCase
 
     public function test_get_meta_default_value()
     {
-        $model = Test::find(1);
+        $model = TestModel::find(1);
         $actual = $model->getMeta('testB', 'testB-default-value');
 
         $this->assertEquals('testB-default-value', $actual, "failed to get fallback for single meta item");
@@ -100,7 +97,7 @@ class MetaTest extends \PHPUnit_Framework_TestCase
 
     public function test_add_meta_as_array()
     {
-        $model = Test::find(1);
+        $model = TestModel::find(1);
         $model->addMeta('testC', ['testC-value', 'testC-second-value']);
         $actual = $model->getMeta('testC');
 
@@ -109,7 +106,7 @@ class MetaTest extends \PHPUnit_Framework_TestCase
 
     public function test_update_meta()
     {
-        $model = Test::find(1);
+        $model = TestModel::find(1);
         $model->addMeta('testD', 'testD-original-value');
         $model->updateMeta('testD', 'testD-updated-value');
         $actual = $model->getMeta('testD');
@@ -119,7 +116,7 @@ class MetaTest extends \PHPUnit_Framework_TestCase
 
     public function test_delete_meta()
     {
-        $model = Test::find(1);
+        $model = TestModel::find(1);
         $model->addMeta('testE', 'testE-value');
         $model->deleteMeta('testE');
         $actual = $model->getMeta('testD');
@@ -129,7 +126,7 @@ class MetaTest extends \PHPUnit_Framework_TestCase
 
     public function test_delete_all_meta()
     {
-        $model = Test::find(1);
+        $model = TestModel::find(1);
         $model->addMeta('testF-first', 'testF-first-value');
         $model->addMeta('testF-second', 'testF-second-value');
         $model->addMeta('testF-third', 'testF-third-value');
@@ -147,7 +144,7 @@ class MetaTest extends \PHPUnit_Framework_TestCase
 
     public function test_append_meta()
     {
-        $model = Test::find(1);
+        $model = TestModel::find(1);
         $model->addMeta('testG', ['testG-value']);
         $model->appendMeta('testG', 'testG-appended-value');
         $actual = $model->getMeta('testG');
@@ -157,7 +154,7 @@ class MetaTest extends \PHPUnit_Framework_TestCase
 
     public function test_get_all_meta()
     {
-        $model = Test::find(1);
+        $model = TestModel::find(1);
 
         $model->addMeta('testH-first', 'testH-first-value');
         $model->addMeta('testH-second', 'testH-second-value');
@@ -174,7 +171,7 @@ class MetaTest extends \PHPUnit_Framework_TestCase
 
     public function test_model_methods()
     {
-        $model = Test::find(1);
+        $model = TestModel::find(1);
         $actual = $model->modelMethod();
 
         $this->assertEquals('this is a TestModel method', $actual, "failed to get append meta item");
@@ -183,7 +180,6 @@ class MetaTest extends \PHPUnit_Framework_TestCase
     public function test_custom_meta_model()
     {
         // This test is ridiculously complicated. There has to be an easier way!
-        // If tests fail or error, you may have to clear out test.sqlite before running again
 
         // The `CustomModelParent` model uses a custom model to handle it's meta
         // The `CustomModelChild` handles meta for `CustomModelParent`
@@ -215,17 +211,17 @@ class MetaTest extends \PHPUnit_Framework_TestCase
         // Now test that the CustomModelParent is working
         $this->assertEquals('this is a CustomModelParent method', $model->modelMethod(), 'failed to use custom method for Parent');
 
-        // Test that data is being saved to the correct table
+        // TestModel that data is being saved to the correct table
         $model->addMeta('testTable', 'value');
         $results = Capsule::select('select * from custom_model_meta');
 
         $this->assertEquals([
             'id' => 1,
             'metable_id' => '1',
-            'metable_type' => 'Phoenix\EloquentMeta\Test\Stubs\CustomModelParent',
+            'metable_type' => CustomModelParent::class,
             'key' => 'testTable',
             'value' => 'value'
-        ], $results[0], "failed to get save meta to correct table");
+        ], get_object_vars($results[0]), "failed to get save meta to correct table");
 
         // Last, clean up our tables
         Capsule::schema()->drop('custom_model_meta');

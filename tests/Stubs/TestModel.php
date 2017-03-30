@@ -4,9 +4,11 @@ namespace Phoenix\EloquentMeta\Test\Stubs;
 use Illuminate\Database\Eloquent\Model;
 use Phoenix\EloquentMeta\MetaTrait;
 
-class Test extends Model
+class TestModel extends Model
 {
     use MetaTrait;
+
+    public $table = 'tests';
 
     public function modelMethod()
     {
