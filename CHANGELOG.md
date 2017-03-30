@@ -3,7 +3,10 @@
 All Notable changes to `EloquentMeta` will be documented in this file
 
 ## NEXT
-- Make compatible with Laravel 5.4
+- More tests (especially for validation)
+
+## v1.6.1 - 3.30.2017
+- Use correct Translator in `validate()`
 
 ## v1.5.1 - 3.30.2017
 - Replace `list()` with `pluck()` for collections
