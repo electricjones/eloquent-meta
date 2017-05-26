@@ -12,7 +12,7 @@ trait MetaTrait
      */
     public function getAllMeta()
     {
-        return new Collection($this->meta->pluck('value', 'key'));
+        return new Collection($this->meta()->pluck('value', 'key'));
     }
 
     /**
