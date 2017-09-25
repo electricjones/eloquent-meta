@@ -12,10 +12,12 @@ Attach meta data to [Laravel's](http://laravel.com/) [Eloquent models](http://la
   * Get meta or fallback
 
 ##### Which Version?
+- Laravel 5.5 - use `1.7.*`
 - Laravel 5.4 - Use `1.6.*`
 - Laravel 5.3 - Use `1.5.*`
 - Below 5.3 - Not technically supported, but should work with `.1.3`
 - Laravel 4 - Also not supported, but should work with `1.2`
+
 ##### Stable Version: 1.4.* works with Laravel 5.* or independently. Pulls Eloquent in automatically.
 To use for Laravel 4, see version 1.2.*
 
