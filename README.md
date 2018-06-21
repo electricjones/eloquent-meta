@@ -133,6 +133,7 @@ Contributors
   - Michael Wilson - @[chrismichaels84](http://github.com/chrismichaels84) - Maintainer
   - Paweł Ciesielski - @[dzafel](http://github.com/dzafel)
   - Lukas Knuth - @[LukasKnuth](http://github.com/LukasKnuth)
+  - @[stephandesouza](http://github.com/stephandesouza)
  
 Many thanks to [Boris Glumpler](https://github.com/shabushabu) and [ScubaClick](https://github.com/ScubaClick) for the original package!
 
