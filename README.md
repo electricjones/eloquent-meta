@@ -12,6 +12,7 @@ Attach meta data to [Laravel's](http://laravel.com/) [Eloquent models](http://la
   * Get meta or fallback
 
 ##### Which Version?
+- Lavavel 5.7 - use `1.9.*`
 - Laravel 5.6 - use `1.8.*`
 - Laravel 5.5 - use `1.7.*`
 - Laravel 5.4 - Use `1.6.*`
