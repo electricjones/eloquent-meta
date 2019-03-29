@@ -37,7 +37,7 @@ class CreateMetaTableCommand extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $table_name = strtolower($this->argument('name'));
         $migration = "create_{$table_name}_table";
