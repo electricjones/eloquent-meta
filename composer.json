@@ -1,5 +1,5 @@
 {
-    "name": "phoenix/eloquent-meta",
+    "name": "Scuissiatto/eloquent-meta",
     "description": "Attach meta data to Eloquent models",
     "keywords": ["eloquent", "laravel", "meta"],
     "homepage": "https://github.com/phoenix-labs/eloquent-meta",
@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=5.6.4",
-	    "illuminate/database": "5.4.*|5.5.*|5.6.*|5.7.*"
+	    "illuminate/database": "5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0"
     },
     "require-dev": {
         "phpunit/phpunit": "4.4.*"
