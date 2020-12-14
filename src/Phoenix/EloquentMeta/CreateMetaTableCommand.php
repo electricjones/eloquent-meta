@@ -3,6 +3,7 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 class CreateMetaTableCommand extends Command
 {
@@ -37,7 +38,7 @@ class CreateMetaTableCommand extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $table_name = strtolower($this->argument('name'));
         $migration = "create_{$table_name}_table";
@@ -66,7 +67,7 @@ class CreateMetaTableCommand extends Command
         $template = $this->fs->get($template_path);
 
         // Replace what is necessary
-        $classname = 'Create'.studly_case(ucfirst($table_name)).'Table';
+        $classname = 'Create' . Str::studly(ucfirst($table_name)) . 'Table';
 
         $contents = str_replace("'__meta__'", "'".$table_name."'", $template);
         $contents = str_replace('SchemaTemplate', $classname, $contents);
