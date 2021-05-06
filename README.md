@@ -1,3 +1,6 @@
+> This should be considered abandoned. It may not even work with newer versions of Laravel. I have moved on from Laravel and PHP.
+> Any PR issued will be accepted w/o question. If you want to own this repository, open an issue and contact me.
+
 # Phoenix Eloquent Meta
 
 [![Latest Version](https://img.shields.io/github/release/chrismichaels84/eloquent-meta.svg?style=flat-square)](https://github.com/phoenix-labs/eloquent-meta/releases)
